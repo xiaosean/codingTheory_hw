@@ -38,22 +38,10 @@ def find_mat_ind_by_row(src_mat, find_row):
 # n = 18
 # dim_k = 4
 
-
-
-# ----------------------------
-# hw input
-# input r
-# input_r = 2
-# base
-# q = 3
-# code_length
-# n = int((3**input_r-1)/2)
-# dim_k = (3**input_r - input_r - 1)/2
-# [n, dim)k, d]
-# print("[%d, %d, 3]" % (n, dim_k))
-
 input_r = int(input("請輸入r 當r>3時 可能會有記憶體不足的訊息。 : "))
+# base
 q = 3
+# code_length
 n = int((3**input_r-1)/2)
 dim_k = (3**input_r - input_r - 1)/2
 print("[n, k, d] = [%d, %d, 3]" % (n, dim_k))
@@ -84,11 +72,7 @@ for index, row in enumerate(c):
 		for data_index in range(k):
 			# print(k - 1 - checkbits_pos)
 			if(data_index != k - 1 - checkbits_pos ):
-				# if(index == debug_index):
-				# 	print("data_index =", data_index, " checkbits_pos=", checkbits_pos ," row[", data_index , "] = ", row[data_index] )
 				data_sum += row[data_index] 
-		# if(index == debug_index):
-		# 	print("data_index =", data_index-1, "sum = ", data_sum)
 		i_check_bit = (q - (data_sum % q)) % q
 		row[k+ checkbits_pos] = i_check_bit
 # get k*k IndentifyMatrix
@@ -108,6 +92,4 @@ G.astype(int)
 print("G = \n", G)
 G = np.matrix(G)
 H = np.matrix(H)
-# print("G * H\n", np.multiply(G, H.transpose()) % q)
-# print(np.multiply(G, H.transpose()))
 print("G * H\n",G * H.transpose() % q)
